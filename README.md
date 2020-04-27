@@ -1,0 +1,2 @@
+# projeto-hotel
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/54ac28d5099b4c68a0935b519e00d73a)](https://app.codacy.com/manual/luanfonsecap/projeto-hotel?utm_source=github.com&utm_medium=referral&utm_content=luanfonsecap/projeto-hotel&utm_campaign=Badge_Grade_Dashboard)
