@@ -1,3 +1,5 @@
+import AppError from '../errors/AppError';
+
 class HotelController {
   constructor(hotel) {
     this.Hotel = hotel;
@@ -13,7 +15,7 @@ class HotelController {
     const hotel = await this.Hotel.findOne({ name });
 
     if (!hotel) {
-      throw new Error('This hotel does not exist');
+      throw new AppError(400, 'This hotel does not exist');
     }
 
     return hotel;
@@ -25,7 +27,7 @@ class HotelController {
     const hotelExist = await this.Hotel.findOne({ name });
 
     if (hotelExist) {
-      throw new Error('This hotel name is already recorded.');
+      throw new AppError(400, 'This hotel name is already recorded.');
     }
 
     const hotel = await this.Hotel.create({
@@ -51,7 +53,7 @@ class HotelController {
     );
 
     if (!hotel) {
-      throw new Error('This hotel doest not exist');
+      throw new AppError(400, 'This hotel doest not exist');
     }
 
     return hotel;
@@ -61,7 +63,7 @@ class HotelController {
     const hotel = this.Hotel.findOne({ id });
 
     if (!hotel) {
-      throw new Error('This hotel doest not exist');
+      throw new AppError(400, 'This hotel doest not exist');
     }
 
     await this.Hotel.deleteOne({ id });

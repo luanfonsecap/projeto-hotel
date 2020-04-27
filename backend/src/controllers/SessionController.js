@@ -1,3 +1,5 @@
+import AppError from '../errors/AppError';
+
 class SessionController {
   constructor(user) {
     this.User = user;
@@ -7,7 +9,7 @@ class SessionController {
     let user = await this.User.findOne({ email });
 
     if (user) {
-      throw new Error('This user is already logged');
+      throw new AppError(400, 'This user is already logged');
     }
 
     user = await this.User.create({ email });

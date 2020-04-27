@@ -5,8 +5,14 @@ const BookingSchema = new Schema({
   contact: Number,
   hotel: String,
   typeRoom: String,
-  time: Date,
+  time: {
+    entry: Date,
+    exit: Date,
+  },
   guest: Number,
+},
+{
+  timestamps: true,
 });
 
 export default model('Booking', BookingSchema);

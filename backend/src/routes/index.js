@@ -10,17 +10,19 @@ const routes = Router();
 
 routes.use('/sessions', sessionsRouter);
 
-routes.use('/booking', bookingRouter);
+routes.use('/bookings', bookingRouter);
 
 routes.use('/hotels', hotelsRouter);
 
-routes.user((err, req, res, _next) => {
+routes.use((err, req, res, _next) => {
   if (err instanceof AppError) {
     return res.status(err.status).json({
-      status: 'OK',
+      status: 'error',
       message: err.message,
     });
   }
+
+  console.log(err);
 
   return res.status(500).json({
     status: 'error',

@@ -5,8 +5,11 @@ const HotelSchema = new Schema({
   uf: String,
   city: String,
   street: String,
-  quantity_rooms: Number,
-  daily_value: Number,
+  quantityRooms: Number,
+  dailyValue: Number,
+},
+{
+  timestamps: true,
 });
 
 export default model('Hotel', HotelSchema);
