@@ -10,6 +10,7 @@ class App {
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useFindAndModify: false,
       });
 
     this.middlewares();

@@ -22,7 +22,7 @@ class HotelController {
   }
 
   async store({
-    name, uf, city, street, quantityRoom, dailyValue,
+    name, uf, city, street, quantity, dailyValue,
   }) {
     const hotelExist = await this.Hotel.findOne({ name });
 
@@ -35,20 +35,22 @@ class HotelController {
       uf,
       city,
       street,
-      quantityRoom,
-      dailyValue,
+      apartaments: {
+        quantity,
+        dailyValue,
+      },
     });
 
     return hotel;
   }
 
   async update({
-    id, name, uf, city, street, quantityRoom, dailyValue,
+    id, name, uf, city, street, quantity, dailyValue,
   }) {
     const hotel = await this.Hotel.findOneAndUpdate(
-      { id },
+      { _id: id },
       {
-        name, uf, city, street, quantityRoom, dailyValue,
+        name, uf, city, street, apartaments: { quantity, dailyValue },
       },
     );
 

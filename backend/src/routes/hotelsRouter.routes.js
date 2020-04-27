@@ -23,11 +23,11 @@ hotelsRouter.get('/:name', async (req, res) => {
 
 hotelsRouter.post('/', async (req, res) => {
   const {
-    name, uf, city, street, quantityRoom, dailyValue,
+    name, uf, city, street, quantity, dailyValue,
   } = req.body;
 
   const hotel = await hotelController.store({
-    name, uf, city, street, quantityRoom, dailyValue,
+    name, uf, city, street, quantity, dailyValue,
   });
 
   return res.json(hotel);

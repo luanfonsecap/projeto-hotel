@@ -5,8 +5,10 @@ const HotelSchema = new Schema({
   uf: String,
   city: String,
   street: String,
-  quantityRooms: Number,
-  dailyValue: Number,
+  apartaments: {
+    quantity: Number,
+    dailyValue: Number,
+  },
 },
 {
   timestamps: true,
