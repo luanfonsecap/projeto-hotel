@@ -25,6 +25,7 @@
 ## :rocket: Tecnologias Utilizadas
 
 - Node.js
+- MongoDB
 - Mongoose
 - Date-fns
 
@@ -33,6 +34,7 @@
 ### :dvd: Rodando o Projeto
 
 Clone o repositório, entre no diretório "backend" e execute os comandos.
+:loudspeaker: É necessário ter o mongoDB instalado.
 ```javascript
 yarn install 
 
