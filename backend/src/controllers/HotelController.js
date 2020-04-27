@@ -62,12 +62,6 @@ class HotelController {
   }
 
   async delete({ id }) {
-    const hotel = this.Hotel.findOne({ id });
-
-    if (!hotel) {
-      throw new AppError(400, 'This hotel doest not exist');
-    }
-
     await this.Hotel.deleteOne({ id });
   }
 }
