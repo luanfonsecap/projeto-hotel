@@ -1,6 +1,6 @@
 <h1 align="center">
-  <img alt="Logo Una" src="https://soualuno.una.br/wp-content/uploads/2018/08/Una-01.png" />   
-  <br>
+  <img alt="Logo Una" width="300" src="https://soualuno.una.br/wp-content/uploads/2018/08/Una-01.png" />   
+  <br><br>
   Projeto Una Hotéis
 </h1>
 
