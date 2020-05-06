@@ -1,18 +1,11 @@
 import { Schema, model } from 'mongoose';
 
 const BookingSchema = new Schema({
-  sponsor: String,
-  contact: Number,
-  hotel: String,
-  typeRoom: String,
-  time: {
-    entry: Date,
-    exit: Date,
-  },
+  sponsor: { type: Schema.Types.ObjectId, ref: 'User' },
+  hotel: { type: Schema.Types.ObjectId, ref: 'Hotel' },
+  initialDate: Date,
+  finalDate: Date,
   guest: Number,
-},
-{
-  timestamps: true,
 });
 
 export default model('Booking', BookingSchema);
