@@ -7,10 +7,18 @@ const sessionController = new SessionController(User);
 
 const sessionsRouter = Router();
 
-sessionsRouter.post('/', async (req, res) => {
-  const { email } = req.body;
+sessionsRouter.get('/:id', async (req, res) => {
+  const { id } = req.params;
 
-  const user = await sessionController.store({ email });
+  const user = await sessionController.show(id);
+
+  return res.json(user);
+});
+
+sessionsRouter.post('/', async (req, res) => {
+  const { name, email } = req.body;
+
+  const user = await sessionController.store({ name, email });
 
   return res.json(user);
 });
