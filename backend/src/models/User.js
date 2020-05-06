@@ -5,7 +5,7 @@ const UserSchema = new Schema({
   email: String,
   bookings: {
     type: Schema.Types.ObjectId,
-    ref: 'Bookings',
+    ref: 'Booking',
   },
 });
 

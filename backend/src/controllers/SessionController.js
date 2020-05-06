@@ -6,7 +6,7 @@ class SessionController {
   }
 
   async show(id) {
-    const user = await this.User.findById(id).populate('Bookings');
+    const user = await this.User.findById(id);
 
     return user;
   }

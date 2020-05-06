@@ -35,4 +35,12 @@ bookingRouter.get('/:id', async (req, res) => {
   return res.json(bookings);
 });
 
+bookingRouter.get('/:id/bookings', async (req, res) => {
+  const { id } = req.params;
+
+  const bookings = await bookingController.show({ id });
+
+  return res.json(bookings);
+});
+
 export default bookingRouter;

@@ -13,6 +13,12 @@ class BookingController {
     return bookings;
   }
 
+  async show({ id }) {
+    const booking = await this.Booking.find({ sponsor: id });
+
+    return booking;
+  }
+
   async store({
     hotelId, userId, initialDate, finalDate, guest,
   }) {
