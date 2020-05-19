@@ -1,4 +1,7 @@
 import { Router } from 'express';
+import multer from 'multer';
+
+import uploadConfig from '../config/upload';
 
 import HotelController from '../controllers/HotelController';
 import Hotel from '../models/Hotel';
@@ -6,6 +9,8 @@ import Hotel from '../models/Hotel';
 const hotelController = new HotelController(Hotel);
 
 const hotelsRouter = new Router();
+
+const upload = multer(uploadConfig);
 
 hotelsRouter.get('/', async (req, res) => {
   const hotels = await hotelController.index();
@@ -21,13 +26,14 @@ hotelsRouter.get('/:name', async (req, res) => {
   return res.json(hotel);
 });
 
-hotelsRouter.post('/', async (req, res) => {
+hotelsRouter.post('/', upload.single('image'), async (req, res) => {
   const {
     name, uf, city, street, quantity, dailyValue,
   } = req.body;
+  const { image } = req.file;
 
   const hotel = await hotelController.store({
-    name, uf, city, street, quantity, dailyValue,
+    name, uf, city, street, quantity, dailyValue, image,
   });
 
   return res.json(hotel);

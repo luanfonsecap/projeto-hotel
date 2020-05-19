@@ -9,9 +9,13 @@ const HotelSchema = new Schema({
     quantity: Number,
     dailyValue: Number,
   },
+  image: String,
 },
 {
+  toJSON: { virtuals: true },
   timestamps: true,
 });
+
+HotelSchema.virtual('image_url').get(() => `http://localhost:3333/uploads/${this.image}`);
 
 export default model('Hotel', HotelSchema);

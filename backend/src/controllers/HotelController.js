@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import AppError from '../errors/AppError';
 
 class HotelController {
@@ -22,7 +23,7 @@ class HotelController {
   }
 
   async store({
-    name, uf, city, street, quantity, dailyValue,
+    name, uf, city, street, quantity, dailyValue, image,
   }) {
     const hotelExist = await this.Hotel.findOne({ name });
 
@@ -39,6 +40,7 @@ class HotelController {
         quantity,
         dailyValue,
       },
+      image,
     });
 
     return hotel;

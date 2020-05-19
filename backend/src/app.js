@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import path from 'path';
 
 import routes from './routes/index';
 
@@ -22,6 +23,8 @@ class App {
   middlewares() {
     this.app.use(express.json());
     this.app.use(cors());
+
+    this.app.use('/images', express.static(path.resolve(__dirname, '..', 'uploads')));
   }
 
   routes() {
