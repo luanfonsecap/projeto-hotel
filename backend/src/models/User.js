@@ -7,6 +7,7 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Booking',
   },
+  profile: String,
 });
 
 export default model('User', UserSchema);
