@@ -15,7 +15,7 @@ class SessionController {
     let user = await this.User.findOne({ email });
 
     if (user) {
-      throw new AppError(400, 'This user is already registered');
+      return user;
     }
 
     user = await this.User.create({ name, email });
