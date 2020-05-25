@@ -55,6 +55,10 @@ class BookingController {
 
     return booking;
   }
+
+  async destroy({ id }) {
+    await this.Booking.deleteOne(id);
+  }
 }
 
 export default BookingController;
