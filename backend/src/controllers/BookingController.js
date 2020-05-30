@@ -26,7 +26,8 @@ class BookingController {
     const schema = Yup.object().shape({
       hotelId: Yup.string().required(),
       userId: Yup.string().required(),
-      initialDate: Yup.object().date().required(),
+      initialDate: Yup.date().required(),
+      finalDate: Yup.date().required(),
       guest: Yup.number().required().min(1),
     });
 

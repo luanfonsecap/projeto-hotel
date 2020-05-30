@@ -40,9 +40,9 @@ bookingRouter.get('/:id/bookings', async (req, res) => {
 
 bookingRouter.post('/:hotelId', async (req, res) => {
   const {
-    initialDate, hotel, finalDate, guest,
+    initialDate, finalDate, guest,
   } = req.body;
-  const { userId } = req.headers;
+  const userId = req.headers.userid;
   const { hotelId } = req.params;
 
   const user = await userController.show(userId);
@@ -55,7 +55,11 @@ bookingRouter.post('/:hotelId', async (req, res) => {
   const finalFormattedDate = parseISO(finalDate);
 
   const booking = await bookingController.store({
-    hotelId, userId, initalFormattedDate, hotel, finalFormattedDate, guest,
+    finalDate: finalFormattedDate,
+    initialDate: initalFormattedDate,
+    guest,
+    hotelId,
+    userId,
   });
 
   return res.status(201).json(booking);
