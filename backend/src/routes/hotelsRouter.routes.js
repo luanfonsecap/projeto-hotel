@@ -39,7 +39,7 @@ hotelsRouter.post('/', upload.single('image'), async (req, res) => {
 
   const user = await userController.show(id);
 
-  if (!user.profile === 'admin') {
+  if (user.profile !== 'admin') {
     throw new AppError(401, "Only admin user's can do this operation.");
   }
 
@@ -59,7 +59,7 @@ hotelsRouter.put('/:id', async (req, res) => {
 
   const user = await userController.show(userId);
 
-  if (!user.profile === 'admin') {
+  if (user.profile !== 'admin') {
     throw new AppError(401, "Only admin user's can do this operation.");
   }
 
@@ -81,7 +81,7 @@ hotelsRouter.delete('/:id', async (req, res) => {
 
   const user = await userController.show(id);
 
-  if (!user.profile === 'admin') {
+  if (user.profile !== 'admin') {
     throw new AppError(401, "Only admin user's can do this operation.");
   }
 

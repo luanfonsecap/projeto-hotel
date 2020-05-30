@@ -28,7 +28,7 @@ bookingRouter.get('/:id/bookings', async (req, res) => {
   const user = await userController.show(userId);
 
   if (user.profile === 'client') {
-    if (!user._id === id) {
+    if (user._id !== id) {
       throw new AppError(401, 'This bookings it is only available for the owner or admins');
     }
   }
@@ -47,7 +47,7 @@ bookingRouter.post('/:hotelId', async (req, res) => {
 
   const user = await userController.show(userId);
 
-  if (!user.profile === 'client') {
+  if (user.profile !== 'client') {
     throw new AppError(401, "Only client user's can do this operation.");
   }
 
@@ -71,7 +71,7 @@ bookingRouter.delete('/:id/booking', async (req, res) => {
 
   const user = await userController.show(userId);
 
-  if (!user.profile === 'admin') {
+  if (user.profile !== 'admin') {
     throw new AppError(401, "Only admin user's can do this operation.");
   }
 
