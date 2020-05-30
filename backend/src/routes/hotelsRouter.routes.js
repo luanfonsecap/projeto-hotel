@@ -52,11 +52,12 @@ hotelsRouter.post('/', upload.single('image'), async (req, res) => {
 
 hotelsRouter.put('/:id', async (req, res) => {
   const { id } = req.params;
+  const userId = req.headers.userid;
   const {
     name, uf, city, street, quantityRoom, dailyValue,
   } = req.body;
 
-  const user = await userController.show(id);
+  const user = await userController.show(userId);
 
   if (!user.profile === 'admin') {
     throw new AppError(401, "Only admin user's can do this operation.");
