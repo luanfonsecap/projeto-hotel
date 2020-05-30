@@ -9,7 +9,8 @@ class BookingController {
   }
 
   async index({ id }) {
-    const bookings = await this.Booking.find({ sponsor: id });
+    const bookings = await this.Booking.find({ sponsor: id })
+      .populate(['sponsor', 'hotel']);
 
     return bookings;
   }
@@ -52,6 +53,7 @@ class BookingController {
     const booking = await this.Booking.create({
       sponsor: userId, hotel: hotelId, initialDate, finalDate, guest,
     });
+
     await booking.populate('sponsor').populate('hotel').execPopulate();
 
     return booking;
